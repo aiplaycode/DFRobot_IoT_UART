@@ -16,10 +16,10 @@
 const OBLOQ_DEBUG = false
 const OBLOQ_MQTT_DEFAULT_SERVER = true
 //Playcode iot
-const OBLOQ_MQTT_PLAYCODE_IOT_SERVER_CHINA = "aiot.huiwancode.com"
-const OBLOQ_MQTT_PLAYCODE_IOT_SERVER_GLOBAL = "aiot.huiwancode.com"
-const OBLOQ_MQTT_PLAYCODE_IOT_SERVER_EN = "aiot.huiwancode.com"
-const OBLOQ_MQTT_PLAYCODE_IOT_PORT = 1883
+const OBLOQ_MQTT_EASY_IOT_SERVER_CHINA = "aiot.huiwancode.com"
+const OBLOQ_MQTT_EASY_IOT_SERVER_GLOBAL = "aiot.huiwancode.com"
+const OBLOQ_MQTT_EASY_IOT_SERVER_EN = "aiot.huiwancode.com"
+const OBLOQ_MQTT_EASY_IOT_PORT = 1883
 //other iot
 const OBLOQ_MQTT_USER_IOT_SERVER = "---.-----.---"
 const OBLOQ_MQTT_USER_IOT_PORT = 0
@@ -94,7 +94,7 @@ namespace DFRobotWiFiIoTUART {
     let OBLOQ_WORKING_MODE_IS_HTTP = OBLOQ_BOOL_TYPE_IS_FALSE
     let OBLOQ_WORKING_MODE_IS_STOP = OBLOQ_BOOL_TYPE_IS_TRUE
 
-    let OBLOQ_MQTT_PLAYCODE_IOT_SIOT = ""
+    let OBLOQ_MQTT_EASY_IOT_SIOT = ""
     let G_city = 0;
     export enum SERVERS {
         //% blockId=SERVERS_China block="PlaycodeIot_CN"
@@ -193,7 +193,7 @@ namespace DFRobotWiFiIoTUART {
         OBLOQ_MQTT_PWD = SECRET_KEY
         OBLOQ_MQTT_ID = API_KEY
         OBLOQ_MQTT_TOPIC[0][0] = IOT_TOPIC
-        OBLOQ_MQTT_PLAYCODE_IOT_SIOT = IP
+        OBLOQ_MQTT_EASY_IOT_SIOT = IP
         //OBLOQ_SERIAL_TX = send
         //OBLOQ_SERIAL_RX = receive
         Obloq_serial_init()
@@ -279,17 +279,17 @@ namespace DFRobotWiFiIoTUART {
         OBLOQ_WORKING_MODE_IS_MQTT = OBLOQ_BOOL_TYPE_IS_TRUE
         if (OBLOQ_MQTT_DEFAULT_SERVER) {
             if (SERVER == SERVERS.China) {
-                OBLOQ_MQTT_SERVER = OBLOQ_MQTT_PLAYCODE_IOT_SERVER_CHINA
+                OBLOQ_MQTT_SERVER = OBLOQ_MQTT_EASY_IOT_SERVER_CHINA
             } else if (SERVER == SERVERS.English) {
-                OBLOQ_MQTT_SERVER = OBLOQ_MQTT_PLAYCODE_IOT_SERVER_EN
+                OBLOQ_MQTT_SERVER = OBLOQ_MQTT_EASY_IOT_SERVER_EN
             } 
             // else if (SERVERS.Global){
-            //     OBLOQ_MQTT_SERVER = OBLOQ_MQTT_PLAYCODE_IOT_SERVER_GLOBAL
+            //     OBLOQ_MQTT_SERVER = OBLOQ_MQTT_EASY_IOT_SERVER_GLOBAL
             // }
             else{
-                OBLOQ_MQTT_SERVER = OBLOQ_MQTT_PLAYCODE_IOT_SIOT
+                OBLOQ_MQTT_SERVER = OBLOQ_MQTT_EASY_IOT_SIOT
             }
-            OBLOQ_MQTT_PORT = OBLOQ_MQTT_PLAYCODE_IOT_PORT
+            OBLOQ_MQTT_PORT = OBLOQ_MQTT_EASY_IOT_PORT
         } else {
             OBLOQ_MQTT_SERVER = OBLOQ_MQTT_USER_IOT_SERVER
             OBLOQ_MQTT_PORT = OBLOQ_MQTT_USER_IOT_PORT
@@ -384,12 +384,12 @@ namespace DFRobotWiFiIoTUART {
             Obloq_mark_reset(type)
             if (OBLOQ_DEBUG) { basic.showString(OBLOQ_WRONG_TYPE) }
             if (OBLOQ_WORKING_MODE_IS_MQTT) {
-                if (OBLOQ_MQTT_SERVER = OBLOQ_MQTT_PLAYCODE_IOT_SERVER_CHINA) {
+                if (OBLOQ_MQTT_SERVER = OBLOQ_MQTT_EASY_IOT_SERVER_CHINA) {
                     Obloq_start_connect_mqtt(SERVERS.China, "connect " + type)
-                } else if (OBLOQ_MQTT_SERVER = OBLOQ_MQTT_PLAYCODE_IOT_SERVER_EN) {
+                } else if (OBLOQ_MQTT_SERVER = OBLOQ_MQTT_EASY_IOT_SERVER_EN) {
                     Obloq_start_connect_mqtt(SERVERS.English, "connect " + type)
                 } 
-                // else if(OBLOQ_MQTT_SERVER = OBLOQ_MQTT_PLAYCODE_IOT_SERVER_GLOBAL) {
+                // else if(OBLOQ_MQTT_SERVER = OBLOQ_MQTT_EASY_IOT_SERVER_GLOBAL) {
                 //     Obloq_start_connect_mqtt(SERVERS.Global, "connect " + type)
                 // }
                 else{
